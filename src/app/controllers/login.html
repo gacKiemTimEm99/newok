@@ -31,7 +31,7 @@
           .then((data) => {
             if (data.token) {
               localStorage.setItem("user", JSON.stringify(data));
-              alert("dang nhap thanh cong", data);
+              alert("Login successfully !!!", data);
             }
             console.log(data);
           })

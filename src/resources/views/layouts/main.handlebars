@@ -1,58 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <body>
-    <div>
-      <input type="text" id="userName" placeholder="userNamee" />
-    </div>
-    <div>
-      <input type="text" id="password" placeholder="passwordd" />
-    </div>
-    <button onclick="login()">login</button>
-    <button onclick="redirect()">shown values</button>
 
-    <script>
-      let login = () => {
-        console.log("usepass", $("#userName").val(), $("#password").val());
-        $.ajax({
-          url: "/login",
-          type: "post",
-          data: {
-            userName: $("#userName").val(),
-            password: $("#password").val(),
-          },
-        })
-          .then((data) => {
-            if (data.token) {
-              localStorage.setItem("user", JSON.stringify(data));
-              alert("dang nhap thanh cong", data);
-            }
-            console.log(data);
-          })
-          .fail((err) => console.log(err));
-      };
-      let redirect = () => {
-        let userLogin = JSON.parse(localStorage.getItem("user"));
-        console.log("data truoc gui", userLogin);
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-        $.ajax({
-          url: "/admin",
-          method: "post",
-          data: userLogin,
+<body>
+  <div>
+    <input type="text" id="userName" placeholder="userNamee" />
+  </div>
+  <div>
+    <input type="text" id="password" placeholder="passwordd" />
+  </div>
+  <button onclick="login()">login</button>
+  <button onclick="redirect()">show values</button>
+
+  <script>
+    let login = () => {
+      console.log("usepass", $("#userName").val(), $("#password").val());
+      $.ajax({
+        url: "/login",
+        type: "post",
+        data: {
+          userName: $("#userName").val(),
+          password: $("#password").val(),
+        },
+      })
+        .then((data) => {
+          if (data.token) {
+            localStorage.setItem("user", JSON.stringify(data));
+            alert("dang nhap thanh cong", data);
+          }
+          console.log(data);
         })
-          .then((data) => {
-            alert(JSON.stringify(data, null, 1));
-          })
-          .fail((error) => {
-            console.log(error);
-          });
-      };
-    </script>
-  </body>
+        .fail((err) => console.log(err));
+    };
+    let redirect = () => {
+      let userLogin = JSON.parse(localStorage.getItem("user"));
+      console.log("data truoc gui", userLogin);
+
+      $.ajax({
+        url: "/admin",
+        method: "post",
+        data: userLogin,
+      })
+        .then((data) => {
+          alert(JSON.stringify(data, null, 1));
+        })
+        .fail((error) => {
+          console.log(error);
+        });
+    };
+  </script>
+</body>
+
 </html>
