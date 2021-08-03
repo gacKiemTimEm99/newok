@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <body>
+    <div>
+      <input
+        type="text"
+        id="userName"
+        placeholder="userNamee"
+        value="phatdeptrai2"
+      />
+    </div>
+    <div>
+      <input type="text" id="password" placeholder="passwordd" value="123" />
+    </div>
+    <button onclick="login()">đăng nhập</button>
+    <button onclick="redirect()">qua trang addmin</button>
+
+    <script>
+      let login = () => {
+        $.ajax({
+          url: "/login",
+          type: "post",
+          data: {
+            userName: "phatdeptrai2",
+            password: "123",
+          },
+        })
+          .then((data) => {
+            if (data.token) {
+              localStorage.setItem("user", JSON.stringify(data));
+              alert("dang nhap thanh cong", data);
+            }
+            console.log(data);
+          })
+          .fail((err) => console.log(err));
+      };
+      let redirect = () => {
+        let userLogin = JSON.parse(localStorage.getItem("user"));
+        console.log("data truoc gui", userLogin);
+
+        $.ajax({
+          url: "/admin",
+          method: "post",
+          data: userLogin,
+        })
+          .then((data) => {
+            alert(data);
+          })
+          .fail((error) => {
+            console.log(error);
+          });
+      };
+    </script>
+  </body>
+</html>
