@@ -52,8 +52,13 @@ class siteController {
       res.json("ddawng nhaapj  dii thawng lz");
     }
   }
-  admin(req, res) {
-    res.json("ok addmin");
+  admin(req, res, next) {
+    user
+      .find({})
+      .then((data) => {
+        console.log("datane", data);
+      })
+      .catch(next);
   }
 }
 module.exports = new siteController();

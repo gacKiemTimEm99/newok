@@ -5,7 +5,7 @@ const User = new Schema(
     userName: { type: String },
     password: { type: String },
     fullName: { type: String },
-    role: { type: Number },
+    role: { type: String },
   },
   { timestamps: true }
 );

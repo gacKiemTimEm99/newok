@@ -22,4 +22,6 @@ app.set("views", path.join(__dirname, "/resources/views"));
 
 route(app);
 
-app.listen(process.env.PORT, () => {});
+app.listen(process.env.PORT || 3000, () => {
+  console.log("server runing");
+});

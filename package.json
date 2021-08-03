@@ -4,7 +4,7 @@
   "description": "no des",
   "main": "src/index.js",
   "scripts": {
-    "start": "node server.js",
+    "start": " node index.js",
     "watch": "node-sass -w src/resources/scss/ --output src/public/css/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

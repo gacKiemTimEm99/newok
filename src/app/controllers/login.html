@@ -9,27 +9,23 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <body>
     <div>
-      <input
-        type="text"
-        id="userName"
-        placeholder="userNamee"
-        value="phatdeptrai2"
-      />
+      <input type="text" id="userName" placeholder="userNamee" />
     </div>
     <div>
-      <input type="text" id="password" placeholder="passwordd" value="123" />
+      <input type="text" id="password" placeholder="passwordd" />
     </div>
-    <button onclick="login()">đăng nhập</button>
-    <button onclick="redirect()">qua trang addmin</button>
+    <button onclick="login()">login</button>
+    <button onclick="redirect()">shown values</button>
 
     <script>
       let login = () => {
+        console.log("usepass", $("#userName").val(), $("#password").val());
         $.ajax({
           url: "/login",
           type: "post",
           data: {
-            userName: "phatdeptrai2",
-            password: "123",
+            userName: $("#userName").val(),
+            password: $("#password").val(),
           },
         })
           .then((data) => {
@@ -51,7 +47,7 @@
           data: userLogin,
         })
           .then((data) => {
-            alert(data);
+            alert(JSON.stringify(data, null, 1));
           })
           .fail((error) => {
             console.log(error);
