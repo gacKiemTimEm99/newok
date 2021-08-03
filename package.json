@@ -2,7 +2,7 @@
   "name": "ex1",
   "version": "1.0.0",
   "description": "no des",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
     "start": " node index.js",
     "watch": "node-sass -w src/resources/scss/ --output src/public/css/",
