@@ -56,7 +56,7 @@ class siteController {
     user
       .find({})
       .then((data) => {
-        console.log("datane", data);
+        res.json(data);
       })
       .catch(next);
   }
