@@ -60,5 +60,14 @@ class siteController {
       })
       .catch(next);
   }
+
+  json(req, res, next) {
+    user
+      .find({})
+      .then((data) => {
+        res.json(data);
+      })
+      .catch(next);
+  }
 }
 module.exports = new siteController();
