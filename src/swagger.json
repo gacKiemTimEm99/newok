@@ -1,0 +1,702 @@
+{   
+    "swagger": "2.0",
+    "info": {
+        "version":"1.0",
+      "title": "SHOWN_API",
+      "description": "infomation of Shown api (gacKiemTimEm)",
+      "license":{
+        "name":"phát nguyễn",
+        "url":"https://www.facebook.com/ng.va.ph.304/"
+      }
+    },
+
+    "tags":[
+      {
+        "name": "viewShownController",
+        "description": "API for shown"
+      },
+      {
+        "name": "manage shown place",
+        "description": "API for shownPlace"
+      },
+      {
+        "name": "manage shown time",
+        "description": "API for shownTime"
+      },
+      {
+        "name": "manage booking ticket",
+        "description": "API for ticket"
+      },
+      {
+        "name": "manage user",
+        "description": "API for user"
+      },
+      {
+        "name": "user action",
+        "description": "API for user action"
+      }
+    ],
+    "paths": {
+      "/listshown":{
+        "get":{
+          "tags": [
+            "viewShownController"
+          ],
+          "summary": "get all shown",
+          "responses": {
+            "200":{
+              "description": "OK"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "viewShownController"
+          ],
+          "summary": "post shown ",
+         "parameters": [
+           {
+             "in":"body",
+             "name": "body",
+             "required": true,
+             "description": "Shown that you want to create ",
+             "schema": {
+               "$ref": "#/definitions/shown"
+             }
+           }
+         ],
+         "responses": {
+           "200":{
+             "description": "Update successfully!!"
+           }
+         }
+        },
+        "put": {
+          "tags": [
+            "viewShownController"
+          ],
+          "summary": "update shown ",
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "required": true,
+              "description": "shown  that you want to update",
+              "schema": {
+                "$ref": "#/definitions/shown"
+              }
+            }
+          ],
+          "responses": {
+            "200":{
+              "description": "update successfully!!"
+            },
+            "404":{
+              "description": "update failure!!"
+            }
+          }
+        }
+       
+      },
+      "/listshown/{id}":{
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of shown",
+            "type": "string"
+          }
+        ],
+        "get": {
+          "tags": [
+            "viewShownController"
+          ],
+          "summary": "get shown with given id",
+          "responses": {
+            "200":{
+              "description": "OK",
+              "schema":{
+                "$ref": "#/definitions/shown"
+              }
+            },
+            "404":{
+              "description": "Shown is not found"
+            }
+
+          }
+        },
+        "delete": {
+          "tags": [
+            "viewShownController"
+          ],
+          "summary": "delete shown with given id",
+          "responses": {
+            "200":{
+              "description": "shown was deleted"
+            },
+            "400":{
+              "description": "can't delete shown by Id"
+            }
+          }
+        }
+      },
+      "/shownplace":{
+        "get":{
+          "tags": [
+            "manage shown place"
+          ],
+          "summary": "get all shown place",
+          "responses": {
+            "200":{
+              "description": "success!"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "manage shown place"
+          ],
+          "summary": "post new shown place",
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "required":true,
+              "description": "that show place you to add",
+              "schema": {
+                "$ref": "#/definitions/shownPlace"
+              }
+            }
+          ],
+          "responses": {
+            "200":{
+              "description": "add new shown place success !!"
+            }
+          }
+        }
+      },
+      "/shownplace/{id}":{
+        "parameters": [
+        { 
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of shown",
+          "type": "string"
+        }
+        ],
+        "put": {
+          "tags": [
+            "manage shown place"
+          ],
+          "summary": "update shown place with given id",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "description": "show place that you want to update",
+              "schema": {
+                "$ref": "#/definitions/shownPlace"
+              }
+            }
+          ],
+          "responses": {
+            "200":{
+              "description": "update successfully!"
+            },
+            "404":{
+              "description": "update failure !!"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "manage shown place"
+          ],
+          "summary": "delete shown place with given id",
+          "responses": {
+            "200":{
+              "description": "shown place was deleted"
+            },
+            "400":{
+              "description": "can't delete shown place by Id"
+            }
+          }
+        }
+
+      },
+      "/showntime":{
+        "get":{
+          "tags": [
+            "manage shown time"
+          ],
+          "summary": "get all shown time",
+          "responses": {
+            "200":{
+              "description": "OK"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "manage shown time"
+          ],
+          "summary": "post shown time ",
+         "parameters": [
+           {
+             "in":"body",
+             "name": "body",
+             "required": true,
+             "description": "Shown time that you want to create ",
+             "schema": {
+               "$ref": "#/definitions/shownTime"
+             }
+           }
+         ],
+         "responses": {
+           "200":{
+             "description": "Update successfully!!"
+           }
+         }
+        }  
+      },
+      "/showntime/{id}":{
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of shown",
+            "type": "string"
+          }
+        ],
+        "delete": {
+          "tags": [
+            "manage shown time"
+          ],
+          "summary": "delete shown time with given id",
+          "responses": {
+            "200":{
+              "description": "shown was deleted"
+            },
+            "400":{
+              "description": "can't delete shown by Id"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "manage shown place"
+          ],
+          "summary": "update shown time with given id",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "description": "show time that you want to update",
+              "schema": {
+                "$ref": "#/definitions/shownTime"
+              }
+            }
+          ],
+          "responses": {
+            "200":{
+              "description": "update successfully!"
+            },
+            "404":{
+              "description": "update failure !!"
+            }
+          }
+        }
+      },
+      "/ticket":{
+        "get":{
+          "tags": [
+            "manage booking ticket"
+          ],
+          "summary": "get all booking ticket",
+          "responses": {
+            "200":{
+              "description": "OK"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "manage booking ticket"
+          ],
+          "summary": "post shown time ",
+         "parameters": [
+           {
+             "in":"body",
+             "name": "body",
+             "required": true,
+             "description": "Shown time that you want to create ",
+             "schema": {
+               "$ref": "#/definitions/ticket"
+             }
+           }
+         ],
+         "responses": {
+           "200":{
+             "description": "Update successfully!!"
+           }
+         }
+        }  
+      },
+      "/ticket/{id}":{
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of shown",
+            "type": "string"
+          }
+        ],
+        "delete": {
+          "tags": [
+            "manage booking ticket"
+          ],
+          "summary": "delete ticket with given id",
+          "responses": {
+            "200":{
+              "description": "ticket was deleted"
+            },
+            "400":{
+              "description": "can't delete ticket by Id"
+            }
+          }
+        }
+      },
+      "/user":{
+        "parameters": [
+          {
+            "name": "accesstoken",
+            "in": "header",
+            "required": true,
+            "description": "token of admin",
+            "type": "string"
+          }
+        ],
+        "get":{
+          "tags": [
+            "manage user"
+          ],
+          "summary": "get all user",
+          "responses": {
+            "200":{
+              "description": "OK"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "manage user"
+          ],
+          "summary": "post new user ",
+         "parameters": [
+           {
+             "in":"body",
+             "name": "body",
+             "required": true,
+             "description": "user that you want to create ",
+             "schema": {
+               "$ref": "#/definitions/user"
+             }
+           }
+         ],
+         "responses": {
+           "200":{
+             "description": "Update successfully!!"
+           }
+         }
+        }  
+      },
+      "/user/{id}":{
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of user",
+            "type": "string"
+          },
+          {
+            "name": "accesstoken",
+            "in": "header",
+            "required": true,
+            "description": "token of admin",
+            "type": "string"
+          }
+        ],
+        "delete": {
+          "tags": [
+            "manage user"
+          ],
+          "summary": "delete user with given id",
+          "responses": {
+            "200":{
+              "description": "user was deleted"
+            },
+            "400":{
+              "description": "can't delete user by Id"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "manage user"
+          ],
+          "summary": "update user with given id",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "description": "user that you want to update",
+              "schema": {
+                "$ref": "#/definitions/user"
+              }
+            }
+          ],
+          "responses": {
+            "200":{
+              "description": "update successfully!"
+            },
+            "404":{
+              "description": "update failure !!"
+            }
+          }
+        }
+      },
+      "/user/userlogin":{
+        "post": {
+          "tags": [
+            "user action"
+          ],
+          "summary": "login with username password",
+          "parameters": [
+              {
+                "in":"body",
+                "name": "body",
+                "required": true,
+                "description": " user login ",
+                "schema": {
+                  "$ref": "#/definitions/login"
+                }
+              }
+          ],
+          "responses": {
+            "200":{
+              "description": "login successfully!"
+            },
+            "400":{
+              "description": "wrong user name or password"
+            }
+          }
+        }
+     
+      },
+      "/user/register":{
+        "post": {
+          "tags": [
+            "user action"
+          ],
+          "summary": "register user",
+          "parameters": [
+              {
+                "in":"body",
+                "name": "body",
+                "required": true,
+                "description": " register ",
+                "schema": {
+                  "$ref": "#/definitions/register"
+                }
+              }
+          ],
+          "responses": {
+            "200":{
+              "description": "register successfully!"
+            },
+            "400":{
+              "description": "user name or email already exists"
+            }
+          }
+        }
+     
+      }
+ 
+      
+    },
+   
+    "definitions": {
+      "id":{
+        "properties": {
+          "uuid":{
+            "type":"string"
+          }
+        }
+      },
+      "shown":{
+        "type":"object",
+        "properties": {
+          "_id":{
+            "type":"string"
+          },
+          "shownName":{
+            "type":"string"
+          },
+          "description":{
+            "type":"string"
+          },
+          "director":{
+            "type":"string"
+          },
+          "category":{
+            "type":"string"
+          },
+          "image":{
+            "type":"string"
+          },
+          "trailer":{
+            "type":"string"
+          },
+          "dateStart":{
+            "type":"string"
+          },
+          "price":{
+            "type":"number"
+          },
+          "shownPlaceId":{
+            "type":"string"
+          }
+
+        }
+      },
+      "shownPlace":{
+        "type":"object",
+        "properties": {
+          "placeName":{
+            "type":"string"
+          },
+          "description":{
+            "type":"string"
+          },
+          "space":{
+            "type":"number"
+          }
+        }
+      },
+      "shownTime":{
+        "type":"object",
+        "properties": {
+          "shownId":{
+            "type":"string"
+          },
+          "shownPlaceId":{
+            "type":"string"
+          },
+          "timeStart":{
+            "type":"string"
+          },
+          "space":{
+            "type":"number"
+          }
+        }
+      },
+      "user":{
+        "type":"object",
+        "properties": {
+          "userName":{
+            "type":"string"
+          },
+          "password":{
+            "type":"string"
+          },
+          "email":{
+            "type":"string"
+          },
+          "phoneNumber":{
+            "type":"string"
+          },
+          "role":{
+            "type":"string"
+          },
+          "fullName":{
+            "type":"string"
+          }
+        }
+      },
+      "login":{
+        "type":"object",
+        "properties": {
+          "userName":{
+            "type":"string"
+          },
+          "password":{
+            "type":"string"
+          }
+        }
+      },
+      "register":{
+        "type":"object",
+        "properties": {
+          "userName":{
+            "type":"string"
+          },
+          "password":{
+            "type":"string"
+          },
+          "email":{
+            "type":"string"
+          },
+          "phoneNumber":{
+            "type":"string"
+          },
+          "fullName":{
+            "type":"string"
+          }
+        }
+      } ,
+      "ticket":{
+        "type":"object",
+        "properties": {
+          "shownName":{
+            "type":"string"
+          },
+          "shownPlace":{
+            "type":"string"
+          },
+          "timeStart":{
+            "type":"string"
+          },
+          "levelUser":{
+            "type":"number"
+          },
+          "user":{
+            "type":"object",
+            "properties": {
+              "userName":{
+                "type":"string"
+              },
+              "email":{
+                "type":"string"
+              },
+              "phoneNumber":{
+                "type":"string"
+              },
+              "fullName":{
+                "type":"string"
+              }
+            }
+          }
+        }
+      }  
+    }
+
+  }
+

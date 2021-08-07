@@ -4,8 +4,10 @@ const User = new Schema(
   {
     userName: { type: String },
     password: { type: String },
-    fullName: { type: String },
+    email: { type: String },
+    phoneNumber: { type: String },
     role: { type: String },
+    fullName: { type: String },
   },
   { timestamps: true }
 );
