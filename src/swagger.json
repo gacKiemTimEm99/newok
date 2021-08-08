@@ -70,32 +70,8 @@
              "description": "Update successfully!!"
            }
          }
-        },
-        "put": {
-          "tags": [
-            "viewShownController"
-          ],
-          "summary": "update shown ",
-          "parameters": [
-            {
-              "in": "body",
-              "name": "body",
-              "required": true,
-              "description": "shown  that you want to update",
-              "schema": {
-                "$ref": "#/definitions/shown"
-              }
-            }
-          ],
-          "responses": {
-            "200":{
-              "description": "update successfully!!"
-            },
-            "404":{
-              "description": "update failure!!"
-            }
-          }
         }
+      
        
       },
       "/listshown/{id}":{
@@ -137,6 +113,31 @@
             },
             "400":{
               "description": "can't delete shown by Id"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "viewShownController"
+          ],
+          "summary": "update shown ",
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "required": true,
+              "description": "shown  that you want to update",
+              "schema": {
+                "$ref": "#/definitions/shown"
+              }
+            }
+          ],
+          "responses": {
+            "200":{
+              "description": "update successfully!!"
+            },
+            "404":{
+              "description": "update failure!!"
             }
           }
         }
@@ -544,9 +545,6 @@
       "shown":{
         "type":"object",
         "properties": {
-          "_id":{
-            "type":"string"
-          },
           "shownName":{
             "type":"string"
           },
