@@ -20,7 +20,7 @@ class UserController {
           email: data.email,
         };
         res.json(user);
-      } else res.json("tài khoản hoặc mật khẩu không đúng !!");
+      } else res.status(404).json("tài khoản hoặc mật khẩu không đúng !!");
     } catch (error) {
       res.status(500).json("LỖI SER CON ME NO VER");
     }
@@ -44,7 +44,7 @@ class UserController {
         email: req.body.email,
       });
       if (flag1 || flag) {
-        return res.json("userName hoặc email đã được đăng ký");
+        return res.json.status(400).json("userName hoặc email đã được đăng ký");
       }
 
       let newUser = { ...req.body, role: "user" };
@@ -66,7 +66,7 @@ class UserController {
         email: req.body.email,
       });
       if (flag1 || flag) {
-        return res.json("userName hoặc email đã được đăng ký");
+        return res.status(404).json("userName hoặc email đã được đăng ký");
       }
       const postUser = new user(req.body);
 
