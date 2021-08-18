@@ -18,6 +18,7 @@ class UserController {
           fullName: data.fullName,
           phoneNumber: data.phoneNumber,
           email: data.email,
+          role: data.role,
         };
         res.json(user);
       } else res.status(404).json("tài khoản hoặc mật khẩu không đúng !!");
