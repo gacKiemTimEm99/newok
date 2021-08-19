@@ -34,6 +34,7 @@ class ShownPlace {
     try {
       let id = req.params.id;
       await showPlace.findByIdAndDelete(id);
+
       res.json("delete successfully!!");
     } catch (error) {
       res.json("delete failure!!");

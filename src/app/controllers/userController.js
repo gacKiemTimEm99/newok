@@ -81,7 +81,7 @@ class UserController {
   updateUser = async (req, res, next) => {
     try {
       let id = req.params.id;
-      await postUser.findByIdAndUpdate(id, req.body);
+      await user.findByIdAndUpdate(id, req.body);
       res.json("update successfully ");
     } catch (error) {
       res.json("update failure!!", error.message);
@@ -91,7 +91,7 @@ class UserController {
   deleteUser = async (req, res, next) => {
     try {
       let id = req.params.id;
-      await postUser.findByIdAndDelete(id);
+      await user.findByIdAndDelete(id);
       res.json("delete successfully!!");
     } catch (error) {
       res.json("delete failure!!");
