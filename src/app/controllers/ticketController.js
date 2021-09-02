@@ -22,7 +22,7 @@ class tiketController {
 
   deleteTicket = async (req, res, next) => {
     try {
-      let id = req.body._id;
+      let id = req.params.id;
       await ticket.findByIdAndDelete(id);
       res.json("delete successfully!!");
     } catch (error) {
